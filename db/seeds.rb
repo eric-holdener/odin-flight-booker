@@ -11,3 +11,6 @@ Airport.create(city: "Atlanta", state: "Georgia", name: "Hartsfield-Jackson Inte
 Airport.create(city: "Denver", state: "Colorado", name: "Denver International Airport", code: "DEN")
 Airport.create(city: "Chicago", state: "Illinois", name: "O'Hare International airport", code: "ORD")
 Airport.create(city: "Los Angeles", state: "California", name: "Los Angeles International Airport", code: "LAX")
+
+Flight.create(departure_time: Time.now, departure_date: Time.now, arrival_time: Time.now.tomorrow, arrival_date: Time.now.tomorrow, inbound_airport_id: 1, outbound_airport_id: 2, flight_capacity: 10)
+Flight.create(departure_time: Time.now, departure_date: Time.now, arrival_time: Time.now.tomorrow, arrival_date: Time.now.tomorrow, inbound_airport_id: 3, outbound_airport_id: 4, flight_capacity: 20)
