@@ -1,7 +1,7 @@
 <div id="<%= dom_id flight %>">
   <p>
     <strong>Departure time:</strong>
-    <%= flight.departure_time %>
+    <%= flight.departure_time.strftime('%H:%M') %>
   </p>
 
   <p>
@@ -11,7 +11,7 @@
 
   <p>
     <strong>Arrival time:</strong>
-    <%= flight.arrival_time %>
+    <%= flight.arrival_time.strftime('%H:%M') %>
   </p>
 
   <p>

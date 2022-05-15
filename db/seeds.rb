@@ -14,3 +14,5 @@ Airport.create(city: "Los Angeles", state: "California", name: "Los Angeles Inte
 
 Flight.create(departure_time: Time.now, departure_date: Time.now, arrival_time: Time.now.tomorrow, arrival_date: Time.now.tomorrow, inbound_airport_id: 1, outbound_airport_id: 2, flight_capacity: 10)
 Flight.create(departure_time: Time.now, departure_date: Time.now, arrival_time: Time.now.tomorrow, arrival_date: Time.now.tomorrow, inbound_airport_id: 3, outbound_airport_id: 4, flight_capacity: 20)
+Flight.create(departure_time: "22:00", departure_date: Time.now, arrival_time: "04:25", arrival_date: Time.now.tomorrow, inbound_airport_id: 5, outbound_airport_id: 2, flight_capacity: 30)
+Flight.create(departure_time: "09:15", departure_date: Time.now, arrival_time: "13:10", arrival_date: Time.now.tomorrow, inbound_airport_id: 3, outbound_airport_id: 1, flight_capacity: 60)
