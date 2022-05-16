@@ -4,13 +4,18 @@
 
 <%= render "search" %>
 
-<div id="flights">
+<div id="all_flights">
+  <h3>All Available Flights</h3>
   <% @flights.each do |flight| %>
     <%= render flight %>
     <p>
-      <%= link_to "Show this flight", flight %>
+      <%= link_to "Book this flight", flight %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New flight", new_flight_path %>
+<div id="search results">
+  <% if @search_results %>
+    <h3>Search Results</h3>
+    <%= render "search_results" %>
+  <% end %>
+</div>

@@ -4,16 +4,15 @@
   <% @airports.each { |airport| airport.outbound_flights.each { |flight| @flying_dates.push(flight.departure_date) } }%>
   <% @flying_dates = @flying_dates.uniq %>
   <h2>Where are you flying out of?</h2>
-  <%= f.input :inbound, as: :select, collection: @airports, prompt: "Select Airport", label: false, method: "GET", url: root_path %>
+  <%= f.input :outbound_airport_id, as: :select, collection: @airports, prompt: "Select Airport", label: false, method: "GET", url: root_path %>
 
   <h2>Where do you want to go?</h2>
-  <%= f.input :outbound, as: :select, collection: @airports, prompt: "Select Airport", label: false, method: "GET", url: root_path %>
+  <%= f.input :inbound_airport_id, as: :select, collection: @airports, prompt: "Select Airport", label: false, method: "GET", url: root_path %>
 
   <h2>How many passengers do you have?</h2>
-  <%= f.input :passengers, as: :select, collection: [1, 2, 3, 4], prompt: "Passenger #", label: false, method: "GET", url: root_path %>
-  <%= f.submit "Search" %>
+  <%= f.input :passengers, as: :select, collection: [1, 2, 3, 4], prompt: "Passenger #", label: false, method: "GET", url: root_path, required: true %>
 
   <h2>When are you flying?</h2>
-  <%= f.input :date, as: :select, collection: @flying_dates, prompt: "Flight Dates Available", label: false, method: "GET", url: root_path %>
+  <%= f.input :departure_date, as: :select, collection: @flying_dates, prompt: "Flight Dates Available", label: false, method: "GET", url: root_path %>
   <%= f.submit "Search" %>
 <% end %>

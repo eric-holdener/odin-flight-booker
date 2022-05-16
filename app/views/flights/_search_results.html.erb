@@ -1,0 +1,10 @@
+<%= simple_form_for(@booking, method: :get, url: new_booking_url) do |f| %>
+  <% @search_results.each do |result| %>
+    <%= f.radio_button :id, result.id %>
+    <%= result.outbound_airport.name %>
+    <p>to</p>
+    <%= result.inbound_airport.name%>
+  <% end %>
+  <%= f.input :passengers, :as => :hidden, input_html: { value: params[:search][:passengers] } %>
+  <%= f.submit %>
+<% end %>

@@ -3,8 +3,13 @@ class FlightsController < ApplicationController
 
   # GET /flights or /flights.json
   def index
+    puts params
+    if(params.has_key?(:search))
+      @search_results ||= generate_query(params[:search])
+    end
+    @airports = Airport.all.includes(:outbound_flights)
     @flights = Flight.all
-    @airports = Airport.all
+    @booking = Booking.new
   end
 
   # GET /flights/1 or /flights/1.json
@@ -67,5 +72,12 @@ class FlightsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def flight_params
       params.require(:flight).permit(:departure_time, :departure_date, :arrival_time, :arrival_date, :flight_capacity)
+    end
+
+    def generate_query(params)
+      flights = Flight.where("inbound_airport_id LIKE '#{params[:inbound_airport_id].to_i}'") unless params[:inbound_airport_id].blank?
+      flights = flights.where("outbound_airport_id LIKE '#{params[:outbound_airport_id].to_i}'") unless params[:outbound_airport_id].blank?
+      flights = flights.where("departure_date LIKE '#{params[:departure_date]}'") unless params[:departure_date].blank?
+      flights
     end
 end
