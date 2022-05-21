@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your booking has been confirmed.</h1>
+    <p>
+      You have successfully booked flight <%= @flight.id %>,
+      departing from <%= @flight.outbound_airport.name %> and arriving at <%= @flight.inbound_airport.name %>.<br>
+    </p>
+    <p>
+      Departure time is <%= @flight.departure_time %> on <%= @flight.departure_date %>.
+    </p>
+    <p>
+      Arrival time is <%= @flight.arrival_time %> on <%= @flight.arrival_date %>.
+    </p>
+    <p>
+      All passengers in your party:
+      <ol>
+        <% @booking.passengers.each do |passenger| %>
+          <li>
+            <%= passenger.name %>
+          </li>
+        <% end %>
+      </ol>
+    </p>
+    <p>Thank you for flighting with us!</p>
+  </body>
+</html>

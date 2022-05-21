@@ -1,0 +1,14 @@
+Your booking has been confirmed.
+====================================================
+
+You have successfully booked <%= @flight.id %>,
+departing from <%= @flight.outbound_airport.city %> on <%= @flight.departure_date%>
+at <%= @flight.departure_time %> and arriving in <%= @flight.inbound_airport.city%> on <%= @flight.arrival_date %>
+at <%= @flight.arrival_time%>.
+
+All passengers in your party:
+<% @booking.passengers.each do |passenger| %>
+*<%= passenger.name%>
+<% end %>
+
+Thank you for flying with us!

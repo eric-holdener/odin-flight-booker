@@ -9,8 +9,9 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
+      PassengerMailer.with(booking_id: @booking.id, flight_id: @booking.flight_id).confirmation_email.deliver_later
       flash[:notice] = "Booking successfully completed!"
-      redirect_to booking_path(@booking)
+      redirect_to root_url
     else
       flash[:alert] = "An error occured!"
       render "new"
